@@ -62,7 +62,10 @@
   --secondary: oklch(0.25 0.016 255);
   --secondary-foreground: oklch(0.97 0.004 255);
   --muted: oklch(0.25 0.016 255);
-  --muted-foreground: oklch(0.68 0.015 255);
+  --muted-foreground: oklch(0.8 0.015 255);
+  --page-gradient-start: oklch(0.44 0.13 48);
+  --page-gradient-mid: oklch(0.32 0.08 300);
+  --page-gradient-end: oklch(0.26 0.1 258);
   --accent: oklch(0.27 0.02 255);
   --accent-foreground: oklch(0.97 0.004 255);
   --destructive: oklch(0.704 0.191 22.216);
@@ -89,7 +92,18 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    background-color: var(--page-gradient-end);
+  }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply min-h-screen text-foreground font-sans;
+    background-color: var(--background);
+    /* oklab interpolation keeps the orange→blue blend from drifting through muddy hues */
+    background-image: linear-gradient(
+      in oklab to bottom,
+      var(--page-gradient-start) 0%,
+      var(--page-gradient-mid) 45%,
+      var(--page-gradient-end) 100%
+    );
   }
 }
