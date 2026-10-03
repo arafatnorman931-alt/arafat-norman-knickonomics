@@ -12,11 +12,18 @@ export type Player = {
   position: string
   number: string
   initials: string
+  seasons: SeasonEarning[]
+}
+
+export type PlayerFinancials = {
   careerEarnings: number
   currentSalary: number
   futureGuaranteed: number
   projectedCareer: number
-  seasons: SeasonEarning[]
+  historicalTotal: number
+  historicalSeasons: number
+  projectedTotal: number
+  projectedSeasons: number
 }
 
 const SEASONS = [
@@ -43,6 +50,34 @@ function buildSeasons(start: number, step: number): SeasonEarning[] {
 
 export const CURRENT_SEASON = SEASONS[CURRENT_SEASON_INDEX]
 
+const sumAmounts = (seasons: SeasonEarning[]) => seasons.reduce((sum, s) => sum + s.amount, 0)
+
+// Single source of truth: every total on the dashboard is derived from `seasons`.
+// Identity: careerEarnings + currentSalary + futureGuaranteed = projectedCareer
+//           historicalTotal (through current season) + projectedTotal = projectedCareer
+export function getPlayerFinancials(player: Player): PlayerFinancials {
+  const currentIndex = player.seasons.findIndex((s) => s.season === CURRENT_SEASON)
+  const completed = player.seasons.slice(0, currentIndex)
+  const historical = player.seasons.filter((s) => !s.projected)
+  const future = player.seasons.filter((s) => s.projected)
+
+  const careerEarnings = sumAmounts(completed)
+  const currentSalary = player.seasons[currentIndex]?.amount ?? 0
+  const futureGuaranteed = sumAmounts(future)
+  const historicalTotal = sumAmounts(historical)
+
+  return {
+    careerEarnings,
+    currentSalary,
+    futureGuaranteed,
+    projectedCareer: historicalTotal + futureGuaranteed,
+    historicalTotal,
+    historicalSeasons: historical.length,
+    projectedTotal: futureGuaranteed,
+    projectedSeasons: future.length,
+  }
+}
+
 export const players: Player[] = [
   {
     id: 'brunson',
@@ -50,10 +85,6 @@ export const players: Player[] = [
     position: 'Guard',
     number: '11',
     initials: 'JB',
-    careerEarnings: 100_000_000,
-    currentSalary: 40_000_000,
-    futureGuaranteed: 120_000_000,
-    projectedCareer: 300_000_000,
     seasons: buildSeasons(20_000_000, 4_000_000),
   },
   {
@@ -62,10 +93,6 @@ export const players: Player[] = [
     position: 'Center',
     number: '32',
     initials: 'KT',
-    careerEarnings: 200_000_000,
-    currentSalary: 50_000_000,
-    futureGuaranteed: 100_000_000,
-    projectedCareer: 350_000_000,
     seasons: buildSeasons(30_000_000, 3_000_000),
   },
   {
@@ -74,10 +101,6 @@ export const players: Player[] = [
     position: 'Forward',
     number: '8',
     initials: 'OA',
-    careerEarnings: 90_000_000,
-    currentSalary: 40_000_000,
-    futureGuaranteed: 110_000_000,
-    projectedCareer: 250_000_000,
     seasons: buildSeasons(15_000_000, 4_000_000),
   },
   {
@@ -86,10 +109,6 @@ export const players: Player[] = [
     position: 'Forward',
     number: '25',
     initials: 'MB',
-    careerEarnings: 110_000_000,
-    currentSalary: 30_000_000,
-    futureGuaranteed: 130_000_000,
-    projectedCareer: 280_000_000,
     seasons: buildSeasons(20_000_000, 3_000_000),
   },
   {
@@ -98,10 +117,6 @@ export const players: Player[] = [
     position: 'Guard',
     number: '3',
     initials: 'JH',
-    careerEarnings: 70_000_000,
-    currentSalary: 20_000_000,
-    futureGuaranteed: 40_000_000,
-    projectedCareer: 140_000_000,
     seasons: buildSeasons(10_000_000, 2_000_000),
   },
 ]
