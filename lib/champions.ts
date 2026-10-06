@@ -17,6 +17,153 @@ export type ChampionSeason = {
 // Rosters and salaries sourced from Basketball-Reference team pages (Roster and Salaries tables).
 export const championSeasons: ChampionSeason[] = [
   {
+    "season": "2025–26",
+    "team": "New York Knicks",
+    "sourceUrl": "https://www.basketball-reference.com/teams/NYK/2026.html",
+    "players": [
+      {
+        "id": "alvarjo01",
+        "name": "Jose Alvarado",
+        "position": "PG",
+        "number": "5",
+        "salary": 4500000
+      },
+      {
+        "id": "anunoog01",
+        "name": "OG Anunoby",
+        "position": "PF",
+        "number": "8",
+        "salary": 39568966
+      },
+      {
+        "id": "bridgmi01",
+        "name": "Mikal Bridges",
+        "position": "SF",
+        "number": "25",
+        "salary": 24900000
+      },
+      {
+        "id": "brunsja01",
+        "name": "Jalen Brunson",
+        "position": "PG",
+        "number": "11",
+        "salary": 34944001
+      },
+      {
+        "id": "clarkjo01",
+        "name": "Jordan Clarkson",
+        "position": "SG",
+        "number": "00",
+        "salary": 2296274
+      },
+      {
+        "id": "dadiepa01",
+        "name": "Pacôme Dadiet",
+        "position": "SG",
+        "number": "4",
+        "salary": 2847600
+      },
+      {
+        "id": "diawamo01",
+        "name": "Mohamed Diawara",
+        "position": "SF",
+        "number": "51",
+        "salary": 1272870
+      },
+      {
+        "id": "evbuoto01",
+        "name": "Tosan Evbuomwan",
+        "position": "SF",
+        "number": "20",
+        "salary": null
+      },
+      {
+        "id": "hartjo01",
+        "name": "Josh Hart",
+        "position": "SF",
+        "number": "3",
+        "salary": 19472240
+      },
+      {
+        "id": "hukpoar01",
+        "name": "Ariel Hukporti",
+        "position": "C",
+        "number": "55",
+        "salary": 1955377
+      },
+      {
+        "id": "jemistr01",
+        "name": "Trey Jemison",
+        "position": "C",
+        "number": "50",
+        "salary": null
+      },
+      {
+        "id": "jonesdi01",
+        "name": "Dillon Jones",
+        "position": "SF",
+        "number": "1",
+        "salary": null
+      },
+      {
+        "id": "kolekty01",
+        "name": "Tyler Kolek",
+        "position": "PG",
+        "number": "13",
+        "salary": 2191897
+      },
+      {
+        "id": "mcbrimi01",
+        "name": "Miles McBride",
+        "position": "SG",
+        "number": "2",
+        "salary": 4333333
+      },
+      {
+        "id": "mcculke01",
+        "name": "Kevin McCullar Jr.",
+        "position": "SF",
+        "number": "9",
+        "salary": null
+      },
+      {
+        "id": "robinmi01",
+        "name": "Mitchell Robinson",
+        "position": "C",
+        "number": "23",
+        "salary": 12954546
+      },
+      {
+        "id": "shamela01",
+        "name": "Landry Shamet",
+        "position": "SG",
+        "number": "44",
+        "salary": 2296274
+      },
+      {
+        "id": "sochaje01",
+        "name": "Jeremy Sochan",
+        "position": "PF",
+        "number": "20",
+        "salary": 778622
+      },
+      {
+        "id": "townska01",
+        "name": "Karl-Anthony Towns",
+        "position": "C",
+        "number": "32",
+        "salary": 53142264
+      },
+      {
+        "id": "yabusgu01",
+        "name": "Guerschon Yabusele",
+        "position": "C",
+        "number": "28",
+        "salary": null
+      }
+    ]
+  },
+  {
     "season": "2024–25",
     "team": "Oklahoma City Thunder",
     "sourceUrl": "https://www.basketball-reference.com/teams/OKC/2025.html",
