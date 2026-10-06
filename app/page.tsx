@@ -1,4 +1,4 @@
-import { EarningsDashboard } from '@/components/earnings-dashboard'
+import { ChampionsDashboard } from '@/components/champions-dashboard'
 
 export default function Page() {
   return (
@@ -27,23 +27,16 @@ export default function Page() {
             <span aria-hidden="true"> — </span>
             The Finances Behind Every NBA Champion
           </p>
-          <div className="flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            <span className="text-primary">New York Knicks</span>
-            <span aria-hidden="true">/</span>
-            <span>2026–27 Season</span>
-            <span className="ml-1 rounded-full border border-border px-2 py-0.5 normal-case tracking-normal">
-              Placeholder data
-            </span>
-          </div>
           <h1 className="text-balance text-3xl font-semibold tracking-tight md:text-5xl">
-            Knicks Player Earnings Dashboard
+            NBA Champions Payroll Dashboard
           </h1>
           <p className="max-w-2xl text-pretty text-base text-muted-foreground md:text-lg">
-            Explore player contracts, career earnings, and future earning projections.
+            Pick a championship season to see the title team&apos;s full roster, each player&apos;s salary that
+            season, and the total player payroll.
           </p>
         </header>
 
-        <EarningsDashboard />
+        <ChampionsDashboard />
       </main>
 
       <footer className="border-t border-border">
@@ -51,7 +44,7 @@ export default function Page() {
           <p>
             <span className="font-medium text-foreground">Champonomics</span> by Arafat Analytics
           </p>
-          <p>NBA financial data and projections are for educational purposes.</p>
+          <p>Salary data sourced from Basketball-Reference. For educational purposes.</p>
         </div>
       </footer>
     </div>

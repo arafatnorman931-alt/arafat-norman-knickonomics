@@ -9,7 +9,7 @@ const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono'
 export const metadata: Metadata = {
   title: 'Champonomics | Arafat Analytics',
   description:
-    'Champonomics by Arafat Analytics: The Finances Behind Every NBA Champion. Explore 2026–27 New York Knicks player contracts, career earnings, and future earning projections.',
+    'Champonomics by Arafat Analytics: The Finances Behind Every NBA Champion. Explore NBA championship rosters, player salaries, and total payroll by season.',
   applicationName: 'Arafat Analytics',
   generator: 'v0.app',
   icons: {
