@@ -3,7 +3,7 @@
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from '@/components/ui/chart'
 import { cn } from '@/lib/utils'
-import { formatCurrency, type Player } from '@/lib/players'
+import { formatCurrency, getPlayerFinancials, type Player } from '@/lib/players'
 
 const chartConfig = {
   historical: { label: 'Historical', color: 'var(--chart-1)' },
@@ -25,10 +25,8 @@ export function SalaryOutlook({ players, selectedId, onSelect }: SalaryOutlookPr
     projected: s.projected ? s.amount : null,
   }))
 
-  const historicalSeasons = player.seasons.filter((s) => !s.projected)
-  const projectedSeasons = player.seasons.filter((s) => s.projected)
-  const historicalTotal = historicalSeasons.reduce((sum, s) => sum + s.amount, 0)
-  const projectedTotal = projectedSeasons.reduce((sum, s) => sum + s.amount, 0)
+  const { historicalTotal, historicalSeasons, projectedTotal, projectedSeasons, projectedCareer } =
+    getPlayerFinancials(player)
 
   return (
     <section aria-labelledby="salary-outlook-heading" className="rounded-xl border border-border bg-card p-5 md:p-6">
@@ -67,7 +65,7 @@ export function SalaryOutlook({ players, selectedId, onSelect }: SalaryOutlookPr
         <div>
           <dt className="flex items-center gap-2 text-xs text-muted-foreground">
             <span aria-hidden="true" className="size-2 rounded-full bg-chart-1" />
-            Historical ({historicalSeasons.length} seasons)
+            Historical ({historicalSeasons} seasons)
           </dt>
           <dd className="mt-1 font-mono text-2xl font-semibold tabular-nums md:text-3xl">
             {formatCurrency(historicalTotal)}
@@ -76,7 +74,7 @@ export function SalaryOutlook({ players, selectedId, onSelect }: SalaryOutlookPr
         <div>
           <dt className="flex items-center gap-2 text-xs text-muted-foreground">
             <span aria-hidden="true" className="size-2 rounded-full bg-chart-2" />
-            Projected ({projectedSeasons.length} seasons)
+            Projected ({projectedSeasons} seasons)
           </dt>
           <dd className="mt-1 font-mono text-2xl font-semibold tabular-nums text-primary md:text-3xl">
             {formatCurrency(projectedTotal)}
@@ -85,7 +83,7 @@ export function SalaryOutlook({ players, selectedId, onSelect }: SalaryOutlookPr
         <div className="col-span-2 sm:col-span-1">
           <dt className="text-xs text-muted-foreground">Projected Career Total</dt>
           <dd className="mt-1 font-mono text-2xl font-semibold tabular-nums md:text-3xl">
-            {formatCurrency(player.projectedCareer)}
+            {formatCurrency(projectedCareer)}
           </dd>
         </div>
       </dl>

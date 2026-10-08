@@ -7,9 +7,10 @@ const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
 
 export const metadata: Metadata = {
-  title: 'Knicks Player Earnings Dashboard | 2026–27',
+  title: 'Champonomics | Arafat Analytics',
   description:
-    'Explore New York Knicks player contracts, career earnings, and future earning projections for the 2026–27 season.',
+    'Champonomics by Arafat Analytics: The Finances Behind Every NBA Champion. Explore NBA championship rosters, player salaries, and total payroll by season.',
+  applicationName: 'Arafat Analytics',
   generator: 'v0.app',
   icons: {
     icon: [

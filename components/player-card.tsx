@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { CURRENT_SEASON, formatCurrency, type Player } from '@/lib/players'
+import { CURRENT_SEASON, formatCurrency, getPlayerFinancials, type Player } from '@/lib/players'
 
 type PlayerCardProps = {
   player: Player
@@ -8,11 +8,12 @@ type PlayerCardProps = {
 }
 
 export function PlayerCard({ player, selected, onSelect }: PlayerCardProps) {
+  const financials = getPlayerFinancials(player)
   const stats = [
-    { label: 'Career Earnings', value: player.careerEarnings },
-    { label: `${CURRENT_SEASON} Salary`, value: player.currentSalary, highlight: true },
-    { label: 'Future Guaranteed', value: player.futureGuaranteed },
-    { label: 'Projected Career', value: player.projectedCareer },
+    { label: 'Career Earnings', value: financials.careerEarnings },
+    { label: `${CURRENT_SEASON} Salary`, value: financials.currentSalary, highlight: true },
+    { label: 'Future Guaranteed', value: financials.futureGuaranteed },
+    { label: 'Projected Career', value: financials.projectedCareer },
   ]
 
   return (
