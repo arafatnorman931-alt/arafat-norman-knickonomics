@@ -9,9 +9,8 @@ const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono'
 export const metadata: Metadata = {
   title: 'Champonomics | Arafat Analytics',
   description:
-    'Champonomics by Arafat Analytics: The Finances Behind Every NBA Champion. Explore NBA championship rosters, player salaries, and total payroll by season.',
+    'Champonomics by Arafat Analytics: The Finances Behind Every NBA Champion. Explore 30 NBA championship rosters, player salaries, staff earnings, arena attendance and payrolls in 2026 dollars.',
   applicationName: 'Arafat Analytics',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
-  themeColor: '#8a3f12',
+  themeColor: '#006bb6',
 }
 
 export default function RootLayout({
