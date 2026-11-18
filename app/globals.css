@@ -86,6 +86,11 @@
   --sidebar-accent-foreground: oklch(0.97 0.004 255);
   --sidebar-border: oklch(1 0 0 / 9%);
   --sidebar-ring: oklch(0.72 0.17 52);
+  /* Team colours: updated at runtime for the selected champion (defaults: Knicks) */
+  --team-primary: #006bb6;
+  --team-secondary: #f58426;
+  --team-accent: #f58426;
+  --team-muted: #006bb6;
 }
 
 @layer base {
@@ -98,12 +103,22 @@
   body {
     @apply min-h-screen text-foreground font-sans;
     background-color: var(--background);
-    /* oklab interpolation keeps the orange→blue blend from drifting through muddy hues */
+    /* Page gradient follows the selected champion's colours */
     background-image: linear-gradient(
       in oklab to bottom,
-      var(--page-gradient-start) 0%,
-      var(--page-gradient-mid) 45%,
+      color-mix(in oklab, var(--team-primary) 55%, var(--page-gradient-end)) 0%,
+      color-mix(in oklab, var(--team-secondary) 14%, var(--background)) 45%,
       var(--page-gradient-end) 100%
     );
+    background-attachment: fixed;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
